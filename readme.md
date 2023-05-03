@@ -5,8 +5,9 @@
 
 # How to Start ?
 
-## Run the migrations:
-1. dotnet ef database update
-2. cd `/ClientApp` and `run npm install`
-3. dotnet watch
-4. 
+### Steps:
+1. run `dotnet ef database update`
+2. run `npm install --prefix ./ClientApp`
+3. run `npm run dev --prefix ./ClientApp`
+4. run `dotnet watch`
+5. open the browser `http://localhost:5000`
