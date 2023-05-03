@@ -18,13 +18,29 @@ import NewPermissionItem from '../NewPermissionItem/NewPermissionItem.vue';
             <tbody>
                 <NewPermissionItem v-if="isAddMode" />
                 <tr v-for="item in permissions">
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.lastName }}</td>
-                    <td>{{ item.userPermission.description }}</td>
-                    <td>{{ item.date }}</td>
-                    <td>
+                    <td class="col-md-2" v-if="item.id !== store.itemEditing">{{ item.name }}</td>
+                    <td class="col-md-2" v-if="item.id === store.itemEditing"><input class="form-control" v-model="item.name"/></td>
+                    <td class="col-md-2" v-if="item.id !== store.itemEditing">{{ item.lastName }}</td>
+                    <td class="col-md-2" v-if="item.id === store.itemEditing"><input class="form-control" v-model="item.lastName"/></td>
+                    <td class="col-md-2" v-if="item.id !== store.itemEditing">{{ item.userPermission.description }}</td>
+                    <td class="col-md-2" v-if="item.id === store.itemEditing">
+                        <select :class="true ? 'form-control' : 'form-control is-invalid'" v-model="item.userPermission">
+                            <option v-for="type in store.permissionTypes" :value="type">
+                                {{type.description}}
+                            </option>
+                        </select>
+                    </td>
+                    
+                    <td class="col-md-2" v-if="item.id !== store.itemEditing">{{ item.date }}</td>
+                    <td class="col-md-2" v-if="item.id === store.itemEditing"><input style="height: 38px" type="date" class="form-control" v-model="item.date"/></td>
+                    <td class="col-md-2">
                         <button 
-                            class="btn btn-danger" 
+                            class="btn btn-outline-warning btn-sm" 
+                            @click="itemEditing !== item.id ? store.changeItemEditing(item.id) : store.updatePermission(item)">
+                                {{ itemEditing === item.id ? 'OK' : 'Editar'}}
+                        </button>
+                        <button 
+                            class="btn btn-outline-danger btn-sm" 
                             @click="store.deletePermission(item)">Borrar
                         </button>
                     </td>

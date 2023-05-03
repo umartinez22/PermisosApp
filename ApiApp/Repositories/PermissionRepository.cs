@@ -32,6 +32,12 @@ namespace ApiApp.Repository
             await context.SaveChangesAsync();
         }
 
+        public async Task UpdatePermission(Permission permission)
+        {
+            context.Permissions.Update(permission);
+            await context.SaveChangesAsync();
+        }
+
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)

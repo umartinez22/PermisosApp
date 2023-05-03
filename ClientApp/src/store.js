@@ -5,6 +5,10 @@ export const store = reactive({
     changeAddMode() {
         this.isAddMode = !this.isAddMode;
     },
+    itemEditing: 0,
+    changeItemEditing(id) {
+        this.itemEditing = id;
+    },
     permissionTypes: [],
     async fetchPermissionTypes() {
         let response = await fetch('/PermissionType');
@@ -16,7 +20,7 @@ export const store = reactive({
     async fetchPermissions() {
         let response = await fetch('/Permission');
         let values = await response.json();
-        this.permissions = values;
+        this.permissions = values.reverse();
     },
     async savePermission() {
         await fetch('/Permission', {
@@ -38,5 +42,15 @@ export const store = reactive({
             }, body: JSON.stringify({ ...permission })
         });
         await this.fetchPermissions();
+    },
+    async updatePermission(permission) {
+        await fetch('/Permission', {
+            method: 'Put',
+            headers: {
+                'Content-Type': 'application/json'
+            }, body: JSON.stringify({ ...permission })
+        });
+        await this.fetchPermissions();
+        this.itemEditing = 0;
     }
 })

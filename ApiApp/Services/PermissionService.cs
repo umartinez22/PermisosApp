@@ -27,5 +27,10 @@ namespace ApiApp.Services
         {
             await repository.DeletePermission(permission);
         }
+
+        public async Task UpdatePermission(Permission permission)
+        {
+            await repository.UpdatePermission(permission);
+        }
     }
 }

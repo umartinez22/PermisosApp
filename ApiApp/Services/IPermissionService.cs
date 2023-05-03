@@ -8,5 +8,6 @@ namespace ApiApp.Services
         IEnumerable<Permission> GetPermissions();
         Task SavePermission(Permission permission);
         Task DeletePermission(Permission permission);
+        Task UpdatePermission(Permission permission);
     }
 }

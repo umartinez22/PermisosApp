@@ -33,5 +33,11 @@ namespace ApiApp.Controllers
         {
             await service.DeletePermission(permission);
         }
+
+        [HttpPut]
+        public async void Put([FromBody] Permission permission)
+        {
+            await service.UpdatePermission(permission);
+        }
     }
 }
