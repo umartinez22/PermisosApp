@@ -16,12 +16,14 @@ namespace ApiApp.Controllers
             this.service = service;
         }
 
+        [HttpGet]
         public IEnumerable<Permission> Get()
         {
             return service.GetPermissions();
         }
 
-        public void Post(Permission permission)
+        [HttpPost]
+        public void Post([FromBody] Permission permission)
         {
             service.SavePermission(permission);
         }

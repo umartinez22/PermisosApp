@@ -8,15 +8,18 @@
     <div class="container">
         <br />
         <button class="btn btn-primary" @click="store.changeAddMode()">
-            {{ isAddMode ? 'Ok' : 'Agregar' }}
+            {{ isAddMode ? 'Cancelar' : 'Agregar' }}
         </button>
         <PermissionList />
-        <h1>Hello World</h1>
     </div>
 </template>
 
 <script>
 export default {
+    mounted() {
+        store.fetchPermissions();
+        store.fetchPermissionTypes();
+    },
     data() {
         return store;
     }

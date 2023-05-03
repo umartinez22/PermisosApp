@@ -41,9 +41,9 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
-// app.UseSpa(spa =>
-// {
-//     spa.UseProxyToSpaDevelopmentServer("http://localhost:5173");
-// });
+app.UseSpa(spa =>
+{
+    spa.UseProxyToSpaDevelopmentServer("http://localhost:5173");
+});
 
 app.Run();

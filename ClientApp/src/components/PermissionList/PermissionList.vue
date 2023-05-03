@@ -12,15 +12,17 @@ import NewPermissionItem from '../NewPermissionItem/NewPermissionItem.vue';
                     <th>Apellido</th>
                     <th>Tipo Permiso</th>
                     <th>Fecha</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <NewPermissionItem v-if="isAddMode" />
-                <tr>
-                    <td>Ulises</td>
-                    <td>Ulises</td>
-                    <td>Ulises</td>
-                    <td>Ulises</td>
+                <tr v-for="item in permissions">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.lastName }}</td>
+                    <td>{{ item.userPermission.description }}</td>
+                    <td>{{ item.date }}</td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>

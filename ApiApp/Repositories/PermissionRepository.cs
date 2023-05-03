@@ -1,6 +1,7 @@
 
 using ApiApp.Helpers.Database;
 using ApiApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiApp.Repository
 {
@@ -16,12 +17,13 @@ namespace ApiApp.Repository
 
         public IEnumerable<Permission> GetPermissions()
         {
-            return context.Permissions.ToList();
+            return context.Permissions.Include(permission => permission.UserPermission);
         }
 
         public async Task SavePermission(Permission permission)
         {
-            await context.AddAsync<Permission>(permission);
+            context.Permissions.Attach(permission);
+            await context.SaveChangesAsync();
         }
 
         protected virtual void Dispose(bool disposing)
