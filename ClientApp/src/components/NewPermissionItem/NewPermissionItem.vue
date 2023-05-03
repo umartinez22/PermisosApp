@@ -13,7 +13,7 @@
                 </option>
             </select>
         </td>
-        <td><input type="date" :class="isDateValid ? 'form-control' : 'form-control is-invalid'" v-model="store.newPermission.date" /></td>
+        <td><input style="height: 38px" type="date" :class="isDateValid ? 'form-control' : 'form-control is-invalid'" v-model="store.newPermission.date" /></td>
         <td>
             <button 
                 :disabled="!isNameValid || !isLastNameValid || !isTypeValid || !isDateValid" 

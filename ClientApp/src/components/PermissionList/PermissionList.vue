@@ -41,7 +41,7 @@ import NewPermissionItem from '../NewPermissionItem/NewPermissionItem.vue';
                         </button>
                         <button 
                             class="btn btn-outline-danger btn-sm" 
-                            @click="store.deletePermission(item)">Borrar
+                            @click="confirm() ? store.deletePermission(item) : null">Borrar
                         </button>
                     </td>
                 </tr>
@@ -51,6 +51,11 @@ import NewPermissionItem from '../NewPermissionItem/NewPermissionItem.vue';
 </template>
 <script>
 export default {
+    methods: {
+        confirm() {
+            return window.confirm("Esta seguro que deseas borrar el permiso ?")
+        }
+    },
     data() {
         return store;
     }
