@@ -6,6 +6,7 @@ namespace ApiApp.Services
     public interface IPermissionService
     {
         IEnumerable<Permission> GetPermissions();
-        void SavePermission(Permission permission);
+        Task SavePermission(Permission permission);
+        Task DeletePermission(Permission permission);
     }
 }

@@ -42,8 +42,6 @@ export default {
                 store.newPermission.date !== '';
         }
     },
-    methods: {
-        sayHello() { console.log('hello')}
-    }
+    methods: {}
 }
 </script>

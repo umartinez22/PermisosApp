@@ -19,19 +19,24 @@ export const store = reactive({
         this.permissions = values;
     },
     async savePermission() {
-        console.log(this.newPermission.userPermission)
         await fetch('/Permission', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             }, body: JSON.stringify({ ...this.newPermission })
         });
+        await this.fetchPermissions();
 
-        try {
-            await this.fetchPermissions();
-        } finally {
-            this.isAddMode = false;
-            this.newPermission = {}
-        }
+        this.isAddMode = false;
+        this.newPermission = {};
+    },
+    async deletePermission(permission) {
+        await fetch('/Permission', {
+            method: 'Delete',
+            headers: {
+                'Content-Type': 'application/json'
+            }, body: JSON.stringify({ ...permission })
+        });
+        await this.fetchPermissions();
     }
 })

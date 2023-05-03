@@ -7,5 +7,6 @@ namespace ApiApp.Repository
     {
         IEnumerable<Permission> GetPermissions();
         Task SavePermission(Permission permission);
+        Task DeletePermission(Permission permission);
     }
 }

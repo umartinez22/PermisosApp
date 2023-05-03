@@ -18,9 +18,14 @@ namespace ApiApp.Services
             return repository.GetPermissions();
         }
 
-        public void SavePermission(Permission permission)
+        public async Task SavePermission(Permission permission)
         {
-            repository.SavePermission(permission);
+            await repository.SavePermission(permission);
+        }
+
+        public async Task DeletePermission(Permission permission)
+        {
+            await repository.DeletePermission(permission);
         }
     }
 }

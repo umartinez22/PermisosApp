@@ -26,6 +26,12 @@ namespace ApiApp.Repository
             await context.SaveChangesAsync();
         }
 
+        public async Task DeletePermission(Permission permission)
+        {
+            context.Permissions.Remove(permission);
+            await context.SaveChangesAsync();
+        }
+
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)

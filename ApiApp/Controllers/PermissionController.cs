@@ -23,9 +23,15 @@ namespace ApiApp.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] Permission permission)
+        public async void Post([FromBody] Permission permission)
         {
-            service.SavePermission(permission);
+            await service.SavePermission(permission);
+        }
+
+        [HttpDelete]
+        public async void Delete([FromBody] Permission permission)
+        {
+            await service.DeletePermission(permission);
         }
     }
 }

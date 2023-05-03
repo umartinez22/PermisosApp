@@ -22,7 +22,12 @@ import NewPermissionItem from '../NewPermissionItem/NewPermissionItem.vue';
                     <td>{{ item.lastName }}</td>
                     <td>{{ item.userPermission.description }}</td>
                     <td>{{ item.date }}</td>
-                    <td></td>
+                    <td>
+                        <button 
+                            class="btn btn-danger" 
+                            @click="store.deletePermission(item)">Borrar
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
